@@ -1,4 +1,4 @@
-# motors-place
+# cars-project
 
 ## Project setup
 ```
