@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import userActions from '../src/users/usersActions'
+import carMutations from '@/cars/carsMutations.js'
+import carActions from '@/cars/carsActions.js'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-
-  },
-  actions: userActions,
-  getters: {
-    getUser: state => state.user
-  }
+    state: {
+        cars: []
+    },
+    getters: {
+    getAllCars: state => state.cars,
+    getOneCar: state => id => state.cars.find(e => e._id === id)
+    },
+    mutations: carMutations,
+    actions: carActions
 })

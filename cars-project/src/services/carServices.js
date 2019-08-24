@@ -22,11 +22,14 @@ export const carService = {
             })
         },
         getAllCars(){
-
+            console.log('here');
+            return this.$http.get(`https://baas.kinvey.com/appdata/${config.appKey}/cars`)
+            .then(({data}) => console.log(data));
         }
     },
     created() {
         this.$http.defaults.headers.post['Authorization'] = `Kinvey ${this.authToken}`
+        this.$http.defaults.headers.get['Authorization'] = `Kinvey ${this.authToken}`
     }
 
 }

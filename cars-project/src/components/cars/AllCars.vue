@@ -9,8 +9,13 @@
 </template>
 
 <script>
-export default {
+import { carService } from '../../services/carServices';
 
+export default {
+    mixins: [carService],
+    created() {
+        this.getAllCars();
+    }
 }
 </script>
 
