@@ -1,12 +1,25 @@
 <template>
   <div id="app">
+    <page-header></page-header>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <page-footer></page-footer>
   </div>
 </template>
+
+<script>
+import PageHeader from '@/components/common/PageHeader'
+import PageFooter from '@/components/common/PageFooter'
+export default {
+  components: {
+    PageHeader,
+    PageFooter
+  }
+}
+</script>
 
 <style>
 #app {
