@@ -3,11 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Vuelidate from 'vuelidate'
+import axiosPlugin from '@/plugins/axiosPlugin' 
+import { authService } from './services/authService'
+Vue.use(axiosPlugin);
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
+
 Vue.use(Vuelidate);
+Vue.use(axiosPlugin);
+Vue.mixin(authService);
+
 
 new Vue({
   router,

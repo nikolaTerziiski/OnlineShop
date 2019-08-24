@@ -1,14 +1,14 @@
 <template>
  <div class="register">
       <h1>Register</h1>
-      <form>
+      <form @submit.prevent="onRegisterClick">
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Ivan Ivanov" />
+        <input type="text" v-model="$v.username.$model" id="username" placeholder="Ivan Ivanov" />
         <label for="email">Email</label>
-        <input type="text" id="email" placeholder="ivan@gmail.com" />
+        <input type="text" v-model="$v.email.$model" id="email" placeholder="ivan@gmail.com" />
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="******" />
-        <button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
+        <input type="password" v-model="$v.password.$model" id="password" placeholder="******" />
+        <button class="btn btn-info my-4 btn-block"  type="submit">Sign up</button>
       </form>
     </div>
     <!-- Sign up button -->
@@ -17,8 +17,42 @@
 </template>
 
 <script>
-export default {
+/* eslint-disable */
+import { authenticate } from '../../services/authService';
 
+import {required, minLength, maxLength, email} from 'vuelidate/lib/validators'
+export default {
+    data() {
+        return {
+            username: 'Pesho',
+            password: '12345',
+            email: 'heello@abv.bg'
+        }
+    },
+    mixins: [authenticate],
+  methods: { 
+      onRegisterClick() {
+        this.registerUser(this.username, this.password)
+              .then(res => {
+                this.$root.$emit('logged-in', res.authtoken);
+                this.$router.push('/')})
+      }
+  },
+  validations: {
+        username: {
+            required,
+            minLength: minLength(3),
+            maxLength: maxLength(20)
+        },
+        password: {
+          required,
+            minLength: minLength(3),
+            maxLength: maxLength(20)
+        },
+        email: {
+          email
+        }
+  }
 }
 </script>
 

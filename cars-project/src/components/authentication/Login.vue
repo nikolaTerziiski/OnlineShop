@@ -1,20 +1,47 @@
 <template>
   <div class="login">
       <h1>Login</h1>
-      <form>
+      <form @submit.prevent="onLoginClick">
         <label for="login">Username</label>
-        <input type="text" id="login" placeholder="Ivan Ivanov" />
+        <input type="text" required v-model="username" id="login" placeholder="Ivan Ivanov" />
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="******" />
-
-        <input type="submit" value="Login" />
+        <input type="password" required v-model="password" id="password" placeholder="******" />
+        <button class="btn btn-info my-4 btn-block"  type="submit">Sign in</button>
       </form>
     </div>
 </template>
 
 <script>
-export default {
+/* eslint-disable */
+import { authenticate } from '../../services/authService';
+import {required, minLength, maxLength} from 'vuelidate/lib/validators'
 
+export default {
+    data() {
+      return {
+          username: 'Peshko',
+          password: '123123',
+      }
+    },
+    mixins: [authenticate],
+    methods: {
+      onLoginClick() {
+          this.loginUser(this.username, this.password)
+          .then(user => {
+            console.log(user);
+                this.$root.$emit('logged-in', user.authtoken);
+                this.$router.push('/');
+          })
+      }
+    },
+    validations: {
+      username: {
+        required
+      },
+      password: {
+        required
+      }
+    }
 }
 </script>
 
