@@ -28,7 +28,6 @@ export default {
       onLoginClick() {
           this.loginUser(this.username, this.password)
           .then(user => {
-            console.log(user);
                 this.$root.$emit('logged-in', user.authtoken);
                 this.$router.push('/');
           })

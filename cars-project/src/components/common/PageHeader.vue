@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul v-if="!isAuthenticated" class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link"><router-link to="/">Home</router-link><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link"><router-link to="/register">Register</router-link></a>
@@ -18,13 +18,16 @@
     </ul>
     <ul v-else class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link"><router-link to="/">Home</router-link><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link"><router-link to="/cars/create">Create Car</router-link></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"><router-link to="/logout">Logout</router-link></a>
+        <a class="nav-link"><router-link to="/cars/all">All Cars</router-link></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><router-link to="/login">Logout</router-link></a>
       </li>
     </ul>
   </div>
@@ -33,7 +36,9 @@
 
 <script>
 export default {
-
+    methods: {
+      
+    }
 }
 </script>
 
