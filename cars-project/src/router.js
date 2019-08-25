@@ -6,8 +6,7 @@ import Login from '../src/components/authentication/Login.vue'
 import Logout from '../src/components/authentication/Logout.vue'
 import CreateCar from '../src/components/cars/CreateCar.vue'
 import AllCars from '../src/components/cars/AllCars.vue'
-
-
+import CarDetails from '../src/components/cars/CarDetails.vue'
 
 
 Vue.use(Router)
@@ -45,6 +44,11 @@ export default new Router({
       path: '/cars/all',
       name: 'allCars',
       component: AllCars
+    },
+    {
+      path: '/cars/:id',
+      name: 'carDetails',
+      component: CarDetails
     }
   ]
 })

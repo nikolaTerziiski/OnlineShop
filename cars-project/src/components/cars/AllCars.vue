@@ -1,7 +1,7 @@
 <template>
   <ul class="list-group list-group-flush">
-  <li class="list-group-item" v-for="car in cars" :key=car._id>Car brand: {{car.carBrand}} |  Car model: {{car.carModel}} | Car price: {{car.price}} EUR | for more information click on -->
-    <a href><router-link to="/car/details">Details</router-link></a>
+  <li class="list-group-item" v-for="car in cars" :key=car._id>{{car.carBrand}} |  {{car.carModel}} | Price: {{car.price}} EUR |  More information -->
+    <a href><router-link :to="{name: 'carDetails', params: {id: car._id}}">Details</router-link></a>
   </li>
 </ul>
 </template>
