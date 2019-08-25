@@ -21,7 +21,6 @@
 
   </div>
   <!-- /.row -->
-
   
 
 </div>
@@ -37,7 +36,7 @@ export default {
       car() {
         return this.getOneCar(this.$route.params.id)
       }
-    }
+    },
 }
 </script>
 

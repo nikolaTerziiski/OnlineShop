@@ -82,8 +82,7 @@ export default {
           minLength: minLength(2),
             maxLength: maxLength(500)
         }
-  }
-  
+  },
 }
 </script>
 

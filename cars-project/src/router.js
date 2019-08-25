@@ -3,10 +3,10 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Register from '../src/components/authentication/Register.vue'
 import Login from '../src/components/authentication/Login.vue'
-import Logout from '../src/components/authentication/Logout.vue'
 import CreateCar from '../src/components/cars/CreateCar.vue'
 import AllCars from '../src/components/cars/AllCars.vue'
 import CarDetails from '../src/components/cars/CarDetails.vue'
+import NotFound from '../src/components/common/NotFound.vue'
 
 
 Vue.use(Router)
@@ -31,11 +31,6 @@ export default new Router({
       component: Login
     },
     {
-      path: '/logout',
-      name:'logout',
-      component: Logout
-    },
-    {
       path: '/cars/create',
       name: 'createCar',
       component: CreateCar
@@ -49,6 +44,11 @@ export default new Router({
       path: '/cars/:id',
       name: 'carDetails',
       component: CarDetails
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })

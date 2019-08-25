@@ -4,7 +4,6 @@ const authString= btoa(`${config.appKey}:${config.appSecret}`)
 const loginUser = user => {
     localStorage.setItem("username", user.username),
     localStorage.setItem("authtoken", user.authToken)
-
     return user;
 }
 const clearToken = () => {
