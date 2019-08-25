@@ -1,12 +1,11 @@
 /* eslint-disable */
 import config from '@/config/config'
+import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from 'constants';
 const authString= btoa(`${config.appKey}:${config.appSecret}`)
 
-const loginUser = user => {
-    localStorage.setItem("username", user.username),
-    localStorage.setItem("authtoken", user.authToken)
+const setCars = cars => {
 
-    return user;
+    return cars;
 }
 
 export const carService = {
@@ -17,15 +16,14 @@ export const carService = {
     },
     methods: {
         createCar(carBrand, carModel, price, carImage, description){
-            return this.$http.post(`https://baas.kinvey.com/appdata/${config.appKey}/cars`, {
+             return this.$http.post(`https://baas.kinvey.com/appdata/${config.appKey}/cars`, {
                 carBrand, carModel, price, carImage, description
             })
         },
         getAllCars(){
-            console.log('here');
-            return this.$http.get(`https://baas.kinvey.com/appdata/${config.appKey}/cars`)
-            .then(({data}) => console.log(data));
-        }
+             return this.$http.get(`https://baas.kinvey.com/appdata/${config.appKey}/cars`)
+        },
+        
     },
     created() {
         this.$http.defaults.headers.post['Authorization'] = `Kinvey ${this.authToken}`
