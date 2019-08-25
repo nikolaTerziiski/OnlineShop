@@ -35,7 +35,6 @@ export default {
     computed: {
       ...mapGetters(['getOneCar']),
       car() {
-        console.log(this.getOneCar(this.$route.params.id));
         return this.getOneCar(this.$route.params.id)
       }
     }

@@ -32,7 +32,7 @@ export default {
     mixins: [authenticate],
   methods: { 
       onRegisterClick() {
-        this.registerUser(this.username, this.password)
+        this.onRegisterUser(this.username, this.password)
               .then(res => {
                 this.$root.$emit('logged-in', res.authtoken);
                 this.$router.push('/')})

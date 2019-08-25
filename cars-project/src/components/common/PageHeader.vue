@@ -26,7 +26,7 @@
         <a class="nav-link"><router-link to="/cars/all">All Cars</router-link></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"><router-link to="/login">Logout</router-link></a>
+        <a class="nav-link" @click.prevent="onLogoutClick()"><router-link to="/">Logout</router-link></a>
       </li>
     </ul>
   </div>
@@ -34,9 +34,15 @@
 </template>
 
 <script>
+/* eslint-disable */
+import { authenticate } from '../../services/authService';
+
 export default {
+    mixins: [authenticate],
     methods: {
-      
+      onLogoutClick(){
+         this.logout().then(res => this.$root.$emit('logged-in', null))
+      }
     }
 }
 </script>

@@ -26,7 +26,7 @@ export default {
     mixins: [authenticate],
     methods: {
       onLoginClick() {
-          this.loginUser(this.username, this.password)
+          this.onLoginUser(this.username, this.password)
           .then(user => {
                 this.$root.$emit('logged-in', user.authtoken);
                 this.$router.push('/');

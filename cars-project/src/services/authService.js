@@ -7,7 +7,11 @@ const loginUser = user => {
 
     return user;
 }
-
+const clearToken = () => {
+    localStorage.removeItem("username"),
+    localStorage.removeItem("authtoken")
+}
+/* eslint-disable */
 export const authService = {
     data() {
         return {
@@ -28,10 +32,10 @@ export const authService = {
 
 export const authenticate = {
     methods: {
-        registerUser(username, password){
+        onRegisterUser(username, password){
             return this.authenticate(`/user/${config.appKey}`, username, password)
         },
-        loginUser(username, password){
+        onLoginUser(username, password){
             return this.authenticate(`/user/${config.appKey}/login`, username, password)
         },
         authenticate(url, username, password){
@@ -43,5 +47,15 @@ export const authenticate = {
                 authToken: data._kmd.authtoken 
             }));
         },
+        logout(){
+            return fetch(`https://baas.kinvey.com/user/${config.appKey}/_logout`,{
+            method: 'POST',
+            headers: {
+                'Authorization': `Kinvey ${this.authToken}`,
+                'Content-Type': 'application/json'
+            },
+            data: null
+            }).then(res => clearToken())
+        }
     },
 }
