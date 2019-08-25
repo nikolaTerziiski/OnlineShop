@@ -3,12 +3,12 @@
       <h1>Register</h1>
       <form @submit.prevent="onRegisterClick">
         <label for="username">Username</label>
-        <input type="text" v-model="$v.username.$model" id="username" placeholder="Ivan Ivanov" />
+        <input type="text" required v-model="$v.username.$model" id="username" placeholder="Ivan Ivanov" />
         <label for="email">Email</label>
-        <input type="text" v-model="$v.email.$model" id="email" placeholder="ivan@gmail.com" />
+        <input type="text" required v-model="$v.email.$model" id="email" placeholder="ivan@gmail.com" />
         <label for="password">Password</label>
-        <input type="password" v-model="$v.password.$model" id="password" placeholder="******" />
-        <button class="btn btn-info my-4 btn-block"  type="submit">Sign up</button>
+        <input type="password" required v-model="$v.password.$model" id="password" placeholder="******" />
+        <button class="btn btn-info my-4 btn-block"  type="submit" :disabled="$v.$error">Sign up</button>
       </form>
     </div>
     <!-- Sign up button -->
@@ -24,9 +24,9 @@ import {required, minLength, maxLength, email} from 'vuelidate/lib/validators'
 export default {
     data() {
         return {
-            username: 'Pesho',
-            password: '12345',
-            email: 'heello@abv.bg'
+            username: '',
+            password: '',
+            email: ''
         }
     },
     mixins: [authenticate],

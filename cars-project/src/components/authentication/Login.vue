@@ -3,9 +3,9 @@
       <h1>Login</h1>
       <form @submit.prevent="onLoginClick">
         <label for="login">Username</label>
-        <input type="text" required v-model="username" id="login" placeholder="Ivan Ivanov" />
+        <input type="text" required v-model="$v.username.$model" id="login" placeholder="Ivan Ivanov" />
         <label for="password">Password</label>
-        <input type="password" required v-model="password" id="password" placeholder="******" />
+        <input type="password" required v-model="$v.password.$model" id="password" placeholder="******" />
         <button class="btn btn-info my-4 btn-block"  type="submit">Sign in</button>
       </form>
     </div>

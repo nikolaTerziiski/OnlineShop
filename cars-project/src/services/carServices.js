@@ -16,18 +16,17 @@ export const carService = {
     },
     methods: {
         createCar(carBrand, carModel, price, carImage, description){
+
+            this.$http.defaults.headers.post['Authorization'] = `Kinvey ${this.authToken}`
+
              return this.$http.post(`https://baas.kinvey.com/appdata/${config.appKey}/cars`, {
                 carBrand, carModel, price, carImage, description
             })
         },
         getAllCars(){
+            this.$http.defaults.headers.get['Authorization'] = `Kinvey ${this.authToken}`
              return this.$http.get(`https://baas.kinvey.com/appdata/${config.appKey}/cars`)
         },
         
     },
-    created() {
-        this.$http.defaults.headers.post['Authorization'] = `Kinvey ${this.authToken}`
-        this.$http.defaults.headers.get['Authorization'] = `Kinvey ${this.authToken}`
-    }
-
 }
