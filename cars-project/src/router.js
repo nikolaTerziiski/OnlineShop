@@ -7,6 +7,8 @@ import CreateCar from '../src/components/cars/CreateCar.vue'
 import AllCars from '../src/components/cars/AllCars.vue'
 import CarDetails from '../src/components/cars/CarDetails.vue'
 import NotFound from '../src/components/common/NotFound.vue'
+import EditCar from '../src/components/cars/EditCar.vue'
+
 
 
 Vue.use(Router)
@@ -49,6 +51,11 @@ export default new Router({
       path: '*',
       name: 'NotFound',
       component: NotFound
+    },
+    {
+      path: '/editCar/:id',
+      name: 'editCar',
+      component: EditCar
     }
   ]
 })

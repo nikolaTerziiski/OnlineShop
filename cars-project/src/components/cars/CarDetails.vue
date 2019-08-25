@@ -17,6 +17,7 @@
         <li>{{this.car.carModel}}</li>
         <li>{{this.car.price}}.00 EUR</li>
       </ul>
+      <button class="btn btn-warning my-4" type="submit"><router-link :to="{name: 'editCar', params: {id: this.car._id}}">Edit car</router-link></button>
     </div>
 
   </div>
