@@ -1,6 +1,5 @@
 /* eslint-disable */
 import config from '@/config/config'
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from 'constants';
 const authString= btoa(`${config.appKey}:${config.appSecret}`)
 
 const setCars = cars => {
@@ -27,6 +26,5 @@ export const carService = {
             this.$http.defaults.headers.get['Authorization'] = `Kinvey ${this.authToken}`
              return this.$http.get(`https://baas.kinvey.com/appdata/${config.appKey}/cars`)
         },
-        
     },
 }

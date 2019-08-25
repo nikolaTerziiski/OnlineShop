@@ -7,20 +7,20 @@
 </template>
 
 <script>
-import { carService } from '../../services/carServices';
 //import config from '@/config/config'
-
+import { mapActions, mapGetters } from "vuex";
 export default {
-    data() {
-     return { 
-       cars: []
-     }
-    },
-    mixins: [carService],
-    mounted() {
-       this.getAllCars()
-       .then(({data}) => this.cars = data)
-    }
+  computed: {
+      ...mapGetters({
+        cars: 'getAllCars'
+      })
+  },
+  methods: {
+    ...mapActions(['getAll'])
+  },
+  created() {
+      this.getAll();
+  }
 }
 </script>
 
